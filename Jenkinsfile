@@ -1,20 +1,54 @@
 pipeline {  
-
     agent any
-    
+    stages {
+        stage("Build") {
+            steps {
+                echo "Building application..."   
+                sh "MyAnt clean"
+            }
+        }
+        stage("Unit Tests") {
+            steps {
+                echo "Unit tests (JUnit)..."
+                echo "Mutation tests (pitest)..."
 
-    // Set path for custom management tools on jenkins
-    //env.PATH = "${tool 'MyAnt 1.10.5'}/bin:${env.PATH}"
-    withAnt(installation: 'MyAnt') {
-   // some block
-        stage ('Build and Test') {
-            sh "ant build clean"
-        }  
-        
-    } 
-    
-
+                
+            }
+        }
+        stage("Functional Test") {
+            steps {
+                echo "Selenium tests..."
+            }
+        }
+        stage("Performance Test") {
+            steps {
+                echo "JMeter tests..."
+            }
+        }
+        stage("Quality Analysis") {
+            steps {
+                echo "Running SonarQube..."
+            }
+        }
+        stage("Security Assessment") {
+            steps {
+                echo "Pen testing..."
+            }
+        }
+        stage("Approval") {
+            steps {
+                    input "Is the build OK?"
+        }
+        }
+        stage("Deploy") {
+            steps {
+                echo "Deploying to JBoss 7.2..."
+            }
+        }
+    }
+    post {
+        always {
+        jecho "Have a Good Day..."
+            }
+    }       
 }
-
-
-
