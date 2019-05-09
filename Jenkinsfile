@@ -1,10 +1,13 @@
 pipeline {  
     agent any
+    environment {
+        ANT_HOME = tool('MyAnt')
+    }
     stages {
         stage("Build") {
             steps {
                 echo "Building application..."   
-                sh "tool 'MyAnt' clean"
+                sh '$ANT_HOME/bin/ant clean'
             }
         }
         stage("Unit Tests") {
