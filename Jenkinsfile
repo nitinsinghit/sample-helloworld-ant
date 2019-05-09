@@ -51,7 +51,7 @@ pipeline {
     }
     post {
         always {
-        jecho "Have a Good Day..."
+        echo "Have a Good Day..."
             }
     }       
 }
