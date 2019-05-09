@@ -1,5 +1,5 @@
 pipeline {  
-    agent any
+    agent { label 'redhat_slave1' }
     environment {
         ANT_HOME = tool('MyAnt')
     }
