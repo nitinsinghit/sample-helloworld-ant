@@ -5,6 +5,7 @@ pipeline {
     }
     stages {
         stage("Build") {
+            agent { label 'redhat_slave1' }
             steps {
                 echo "Building application..."   
                 sh '$ANT_HOME/bin/ant clean'
