@@ -1,5 +1,5 @@
 
-node ("redhat-slave1")
+node ("any")
 {
 
     // Set path for custom management tools on jenkins
