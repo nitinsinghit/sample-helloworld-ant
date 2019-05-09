@@ -4,7 +4,7 @@ pipeline {
         stage("Build") {
             steps {
                 echo "Building application..."   
-                sh "MyAnt clean"
+                sh "tool MyAnt clean"
             }
         }
         stage("Unit Tests") {
